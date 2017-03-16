@@ -6,7 +6,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * 利用循环CAS实现原子操作
  * @author sampson
- *
+ * 1换个场景（有加有减）可能会出现ABA问题，解决方法，使用版本号
+ * AtomicStampedReference atomicStampedRef = new AtomicStampedReference(100, 0);
+ * 版本号是0，基础类型值是100（或者存对象引用）。compareAndSet(expectedRerference , newReference , expectStamp ,newStamp), 
+ * CAS的时候，就会先检查stamp是否相符！不相等返回false;   
+ * 2循环开销大，使用pause指令01可以延迟流水线执行指令02避免在退出循环时候因内存顺序冲突引起的cpu流水线被清空
+ * 3只能保证一个共享变量的原子操作，解决方法，把多个变量放在一个对象里进行CAS操作
  */
 public class Count {
 	private int i=0;
