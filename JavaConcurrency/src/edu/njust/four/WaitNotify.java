@@ -25,8 +25,8 @@ import java.util.concurrent.TimeUnit;
  * 3执行逻辑
  * 通知方
  * synchronized(对象){			
- * 	改变条件；						
- * 对象.notify();or notifyAll()	
+ * 	    改变条件；						
+ *    对象.notify();or notifyAll()	
  * }
  * 1获取对象的锁
  * 2改变条件
