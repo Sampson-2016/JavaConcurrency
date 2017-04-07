@@ -13,18 +13,24 @@ import java.util.concurrent.TimeUnit;
  * Thread[wait thread,5,main]flag is false.running16:35:49
  * 等待通知经典
  * 等待方
- * synchronized(对象){			1获取对象的锁
- * 	while(条件不满足){				2条件不满足时，调用对象的wait方法
+ * synchronized(对象){			
+ * 	while(条件不满足){				
  * 		对象.wait();				
- * 	}							被通知后仍检查条件
- * 	对应的处理逻辑					3执行逻辑
+ * 	}							
+ * 	对应的处理逻辑					
  * }
+ * 1获取对象的锁
+ * 2条件不满足时，调用对象的wait方法
+ * 被通知后仍检查条件
+ * 3执行逻辑
  * 通知方
- * synchronized(对象){			1获取对象的锁
- * 	改变条件；						2改变条件
- * 对象.notify();or notifyAll()	3通知所有等待在对象上的线程，这个时候等待方从等待队列移到同步队列
- * 	
+ * synchronized(对象){			
+ * 	改变条件；						
+ * 对象.notify();or notifyAll()	
  * }
+ * 1获取对象的锁
+ * 2改变条件
+ * 3通知所有等待在对象上的线程，这个时候等待方从等待队列移到同步队列
  */
 
 
